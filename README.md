@@ -21,6 +21,7 @@ myenv/Scripts/activate
 
 # create tg_token
 # create .env file  and add your token in SECRET_TOKEN
+#
 
 
 # run tg_bot.py:
@@ -30,4 +31,19 @@ run main.py
 
 
 
-## Run 
+## Command for build and run docker 
+```shell
+# build image docker
+docker build -t tg_bot_files . 
+
+# create volume
+docker volume create tg_vol
+
+# run image 
+docker run --rm -d -v tg_vol:/app/todo_result tg_bot_files
+
+# exec image
+docker exec -it <image_names> bash
+
+
+```

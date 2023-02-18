@@ -32,6 +32,7 @@ def get_todo_data() -> pd.DataFrame:
 @dp.message_handler(commands="all")
 async def all_tasks(payload: types.Message):
 
+
     try:
         await payload.reply(f"```{get_todo_data().to_markdown()}```",
                             parse_mode="Markdown"
@@ -40,6 +41,8 @@ async def all_tasks(payload: types.Message):
         await payload.reply(f"ToDo list is empty!",
                             parse_mode="Markdown"
                             )
+
+
 
 
 @dp.message_handler(commands="add")
