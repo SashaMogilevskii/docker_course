@@ -1,9 +1,11 @@
 from clickhouse_driver import Client
+import os
 connection = Client(
-    host="localhost",
+    host=os.environ.get("CH_HOST"),
     user="default",
     password="",
     port=9000,
+    database="todo",
 )
 
 connection.execute("CREATE DATABASE todo")

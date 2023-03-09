@@ -9,11 +9,11 @@ app = Flask(__name__)
 
 def get_db_connection():
     conn = psycopg2.connect(
-        port="5432",
-        database="docker_app_db",
-        user="docker_app",
-        password="docker_app",
         host=os.environ.get("HOST"),
+        port=os.environ.get("PORT"),
+        database=os.environ.get("DB"),
+        user=os.environ.get("DB_USERNAME"),
+        password=os.environ.get("DB_PASSWORD"),
 
     )
     return conn

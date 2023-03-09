@@ -40,12 +40,15 @@ docker build -t tg_bot_files .
 docker volume create tg_vol
 
 # run image 
-docker run --rm -d -p 8123:8123 -p 9000:9000 --name ch_db yandex/clickhouse-server
+docker run --rm -d --name clickhouse --net=mynetwork yandex/clickhouse-server
 
-docker run --rm -d -e SECRET_TOKEN=<your_token> -v tg_vol:/app/todo_result tg_bot_files
+docker run --rm --name tg_bot --net=mynetwork  -e APP_TOKEN=clickhouse -e SECRET_TO
+KEN=<token> tg_bot_files 
 
 # exec image
 docker exec -it <image_names> bash
 
 
 ```
+
+

@@ -27,7 +27,7 @@ status TEXT NOT NULL
 );                        
 
 # run backend
-docker run --rm -d --name backend --network mynetwork -p 8000:8000 -e HOST=database 6_back
+docker run --rm -d --name backend --network mynetwork -p 8000:8000 -e HOST=database -e PORT=5432 -e DB=docker_app_db -e DB_USERNAME=docker_app -e DB_PASSWORD=docker_app 6_back
 
 # create row:
 curl -X PUT localhost:8000/api -H 'Content-Type: application/json' -d '{"text":"Buy milk", "status":"active"}'
